@@ -25,7 +25,7 @@ It includes the following features:
 
 ## Key components
 
-![components](docs/images/Mamemaki.Newconn.Components.drawio.png)
+![components](Mamemaki.Newconn/docs/images/Mamemaki.Newconn.Components.drawio.png)
 
 \* Star sign indicates the classes/methods that you need to implement.
 
