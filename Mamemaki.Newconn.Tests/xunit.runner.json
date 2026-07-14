@@ -1,0 +1,7 @@
+{
+  "$schema": "https://xunit.net/schema/current/xunit.runner.schema.json",
+  "printMaxEnumerableLength": 50,
+  "printMaxObjectDepth": 5,
+  "printMaxObjectMemberCount": 50,
+  "printMaxStringLength": 5000
+}

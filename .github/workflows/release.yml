@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+*'
+  workflow_dispatch:
+    tags:
+      - 'v[0-9]+*'
+
+permissions:
+  id-token: write   # Required for OIDC token generation
+  contents: read    # Required for actions/checkout
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        dotnet-version: ['8.0.x']
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+      NUGET_XMLDOC_MODE: skip
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v1
+    - name: Setup .NET Core ${{ matrix.dotnet-version }}
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+    - name: Test
+      run: dotnet test -c Release ./Mamemaki.Newconn.Tests/Mamemaki.Newconn.Tests.csproj
+  release:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v1
+    - name: Create NuGet package
+      run: dotnet pack -c Release ./Mamemaki.Newconn/Mamemaki.Newconn.csproj
+    - name: NuGet Login
+      uses: NuGet/login@v1
+      id: login
+      with:
+        user: tsu1980
+    - name: Publish nuget
+      run: dotnet nuget push ./Mamemaki.Newconn/bin/Release/Mamemaki.Newconn.*.nupkg -k "$NUGET_API_KEY" -s https://api.nuget.org/v3/index.json
+      env:
+        NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
