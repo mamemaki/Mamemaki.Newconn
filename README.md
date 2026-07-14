@@ -29,13 +29,13 @@ It includes the following features:
 
 \* Star sign indicates the classes/methods that you need to implement.
 
-- **ÅöClient**: This is a client class. It is just a wrapper of the connection. You whould implement your own client class by inheriting from this class. Using this class is optional. You can use the Connection class directly or via the client class. **This class can be instantiated via Dependency Injection**. This means that you can use DI services like DBContext within it. You can define business layer methods such as AuthenticateAsync in it.
-- **ÅöConnection**: This class represents a connection. You will implement your own connection class by inheriting from this class. **This class can only be instantiated by parameterless constructor**. Within the class, you can send or receive your protocol messages by using your protocol class. Additionally, **the connection class will be shared between Server and Client**. This means that you can define common methods for both sides.
-- **ÅöProtocol**: This is your protocol definition class. It handles the encoding and decoding of your protocol messages from the raw transfer data. This class is stateless. If you use the raw transfer data as-is, you do not need to implement it.
+- **‚òÖClient**: This is a client class. It is just a wrapper of the connection. You whould implement your own client class by inheriting from this class. Using this class is optional. You can use the Connection class directly or via the client class. **This class can be instantiated via Dependency Injection**. This means that you can use DI services like DBContext within it. You can define business layer methods such as AuthenticateAsync in it.
+- **‚òÖConnection**: This class represents a connection. You will implement your own connection class by inheriting from this class. **This class can only be instantiated by parameterless constructor**. Within the class, you can send or receive your protocol messages by using your protocol class. Additionally, **the connection class will be shared between Server and Client**. This means that you can define common methods for both sides.
+- **‚òÖProtocol**: This is your protocol definition class. It handles the encoding and decoding of your protocol messages from the raw transfer data. This class is stateless. If you use the raw transfer data as-is, you do not need to implement it.
 - **TransportConnection**: This class implements actual transfer processing, such as socket handling. Users would not usually use this class directly.
 - **NewconnServer**: This is the server class. It manages all listeners and global settings.
 - **NewconnListener**: This is a listener class. It accepts connections from endpoints, dispatches connection handlers, and manages accepted connection resources.
-- **ÅöConnectionHandler**: This is a connection handler method/class. You will implement the processing for the accepted connection. You can define business layer methods such as AuthenticateAsync in it.
+- **‚òÖConnectionHandler**: This is a connection handler method/class. You will implement the processing for the accepted connection. You can define business layer methods such as AuthenticateAsync in it.
 
 ## Documentation
 
