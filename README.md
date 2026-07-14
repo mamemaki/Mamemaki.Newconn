@@ -39,7 +39,7 @@ It includes the following features:
 
 ## Documentation
 
-- [Implementation Guide](ImplementationGuide.md)
+- [Implementation Guide](Mamemaki.Newconn/docs/ImplementationGuide.md)
 
 ## Benchmark
 | Method | Framework   | Mean     | Error    | StdDev   | Allocated |

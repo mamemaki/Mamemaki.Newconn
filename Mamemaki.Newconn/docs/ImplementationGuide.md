@@ -13,7 +13,7 @@ The Simple Message Protocol is defined as follows:
 - The body part is optional. No whitespace means no body.
 
 ### Implementation steps
-To build server and client, you need implement these components. Please refer to [Key components](../README.md#key-components) for the role of each component.
+To build server and client, you need implement these components. Please refer to [Key components](../../README.md#key-components) for the role of each component.
 
 - Protocol
 - Connection
